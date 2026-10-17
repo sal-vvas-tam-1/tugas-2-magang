@@ -17,8 +17,10 @@ namun fungsi diatas hanyalah fungsi x dan y terhadap persen t paada bidang karte
 sedangkan saya membuat node yang publish ke /turtle1/cmd_vel yang msg nya adalah "{linear: {x, y, z}, angular: {x, y, z}}" dan karena limitasi turtlesim hanya menggunakan linear x dan angular z relatif ke turtle1 sendiri bukan global grid turtle simnya sehingga fungsi x(t) dan y(t) harus di konversi menjadi linear x dan angular z
 menerapkan transformasi kinematic kita bisa mendapatkan linearx= sqrt((dx/dt * dx/dt) + (dy/dt*dy/dt)) dan angular z = ((dx/dt * ddy/dt) - (dy/dt * ddx/dt)) / ((dx/dt * dx/dt) + (dy/dt *dy/ dt))
 untuk implementasi dalam node saya membuat function beziertoturtlelinear() dan beziertoturtleang() untuk dipakai pada timer_callback()
-timer_callback() bekerja setiap 10 ms berisi variable t yang bertambah 0.01 setiap timer_callback() sehingga t menjadi sama dengan hitungan detik
+timer_callback() bekerja setiap 10 ms berisi variable t yang bertambah 0.01 setiap timer_callback() sehingga t menjadi sama dengan hitungan detik t di ubah menjadi nilai desimal < 1 untuk function berzier
 untuk menulis huruf huruf dibagi menjadi beberapa kurva seperti s menjadi 2 kurva untuk lengkungan atas dan bawah
 lalu cari P0 P1 dan P2 dari kurva tersebut 
 masukan pada beziertoturtlelinear() dan beziertoturtleang() dan publish ke /turtle1/cmd_vel sebagai linear x dan angular z
 gabungkan kurva kurva menjadi huruf pada timer_callback()
+
+link video: https://drive.google.com/file/d/1q7LyHpPxwz6gmTHiM4AoJhMFP3T8ZF_I/view?usp=drivesdk
